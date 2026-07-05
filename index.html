@@ -1,0 +1,831 @@
+<!DOCTYPE html>
+<html lang="en-IN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>LactFree — Real milk. Zero lactose. | Launching in Bangalore</title>
+<meta name="description" content="LactFree is real cow's milk with the lactose already broken down. Made for your chai. 1 litre, ₹115. Launching soon in Bangalore. First litre free for the list.">
+<meta property="og:title" content="LactFree — Real milk. Zero lactose.">
+<meta property="og:description" content="Made for your chai. 1L · ₹115 · Launching in Bangalore.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://lactfree.in/assets/milk-hero.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🥛%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://api.fontshare.com" crossorigin>
+<link href="https://api.fontshare.com/v2/css?f[]=switzer@400,500,600,700&display=swap" rel="stylesheet">
+
+<!-- ───────────────────────── Meta Pixel (stub — replace PIXEL_ID before launch) ───────────────────────── -->
+<script>
+  window.LF_PIXEL_ID = "PIXEL_ID"; // ← paste real Meta Pixel ID before launch (Task 10)
+  if (window.LF_PIXEL_ID !== "PIXEL_ID") {
+    !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+    n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+    document,'script','https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', window.LF_PIXEL_ID);
+    fbq('track', 'PageView');
+  } else {
+    console.warn('LactFree: Meta Pixel NOT wired (placeholder ID) — do not run ads against this build.');
+  }
+  // Safe wrapper: logs locally when no pixel is wired, never throws.
+  function lfTrack(event, params) {
+    if (window.fbq) { fbq('track', event, params || {}); }
+  }
+</script>
+
+<style>
+  :root {
+    --paper:   #FBF9F5;   /* warm gallery white */
+    --paper-2: #F4F0E8;   /* cream wash for alternating stage */
+    --ink:     #17140F;   /* warm near-black */
+    --ink-60:  rgba(23, 20, 15, 0.60);
+    --ink-40:  rgba(23, 20, 15, 0.40);
+    --ink-12:  rgba(23, 20, 15, 0.12);
+    --chai:    #B0722E;   /* chai amber — the single accent */
+    --chai-deep: #8F5A20;
+    --white:   #FFFFFF;
+    --radius-card: 28px;
+    --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+    --font: "Switzer", -apple-system, "SF Pro Display", "Helvetica Neue", sans-serif;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--font);
+    background: var(--paper);
+    color: var(--ink);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    overflow-x: hidden;
+  }
+
+  ::selection { background: rgba(176, 114, 46, 0.18); }
+
+  /* ── grain: one whisper of texture so the cream never reads flat ── */
+  body::before {
+    content: "";
+    position: fixed; inset: 0;
+    pointer-events: none; z-index: 1;
+    opacity: 0.35;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3CfeColorMatrix values='0 0 0 0 0.09 0 0 0 0 0.08 0 0 0 0 0.06 0 0 0 0.05 0'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
+  main, header, footer { position: relative; z-index: 2; }
+
+  .wrap { width: 100%; max-width: 680px; margin: 0 auto; padding: 0 24px; }
+
+  /* ───────────────────────── Nav ───────────────────────── */
+  .nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 50;
+    backdrop-filter: blur(18px) saturate(1.6);
+    -webkit-backdrop-filter: blur(18px) saturate(1.6);
+    background: rgba(251, 249, 245, 0.72);
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.4s;
+  }
+  .nav.scrolled { border-bottom-color: var(--ink-12); }
+  .nav-inner {
+    max-width: 680px; margin: 0 auto; padding: 0 24px;
+    height: 52px; display: flex; align-items: center; justify-content: space-between;
+  }
+  .wordmark {
+    font-weight: 700; font-size: 17px; letter-spacing: -0.02em;
+  }
+  .wordmark .dot { color: var(--chai); }
+  .nav-city {
+    font-size: 12px; font-weight: 500; letter-spacing: 0.08em;
+    text-transform: uppercase; color: var(--ink-40);
+  }
+
+  /* ───────────────────────── Hero ───────────────────────── */
+  .hero {
+    min-height: 100svh;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: flex-start;
+    text-align: center;
+    padding: calc(52px + 8svh) 24px 0;
+  }
+
+  .eyebrow {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-size: 12.5px; font-weight: 600; letter-spacing: 0.10em;
+    text-transform: uppercase; color: var(--chai-deep);
+    margin-bottom: 22px;
+  }
+  .eyebrow::before {
+    content: ""; width: 6px; height: 6px; border-radius: 50%;
+    background: var(--chai);
+    animation: pulse 2.4s ease-in-out infinite;
+  }
+  @keyframes pulse { 0%,100% { opacity: 1 } 50% { opacity: 0.35 } }
+
+  h1 {
+    font-size: clamp(46px, 13.5vw, 84px);
+    line-height: 0.98;
+    font-weight: 700;
+    letter-spacing: -0.045em;
+  }
+  h1 .soft { color: var(--ink-40); }
+
+  .hero-sub {
+    margin-top: 18px;
+    font-size: clamp(18px, 5vw, 22px);
+    line-height: 1.4;
+    font-weight: 500;
+    color: var(--ink-60);
+    max-width: 30ch;
+  }
+
+  /* ── founder hook, fused into the hero (Harry's pattern) ── */
+  .hook {
+    margin-top: 22px;
+    display: flex; align-items: flex-start; gap: 14px;
+    max-width: 40ch; text-align: left;
+  }
+  .hook-avatar {
+    flex: none; width: 46px; height: 46px; border-radius: 50%;
+    background: var(--paper-2); border: 1.5px solid var(--ink-12);
+    display: grid; place-items: center;
+    font-weight: 700; font-size: 18px; color: var(--chai-deep);
+    background-size: cover; background-position: center;
+  }
+  .hook-quote {
+    font-size: 15.5px; line-height: 1.5;
+    color: var(--ink-60); font-weight: 480;
+  }
+  .hook-name { color: var(--ink); font-weight: 650; white-space: nowrap; }
+  @media (max-width: 360px) {
+    .hook { gap: 11px; }
+    .hook-avatar { width: 38px; height: 38px; font-size: 15px; }
+    .hook-quote { font-size: 14.5px; }
+  }
+
+  .use-picker { margin-top: 16px; display: flex; gap: 8px; }
+  .use-chip {
+    appearance: none; cursor: pointer; font-family: inherit;
+    font-size: 13.5px; font-weight: 600; letter-spacing: -0.01em;
+    padding: 8px 16px; border-radius: 999px;
+    border: 1.5px solid var(--ink-12); background: transparent; color: var(--ink-60);
+    transition: all 0.25s var(--ease-out);
+  }
+  .use-chip.active { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+
+  .hero-cta-row {
+    margin-top: 28px;
+    display: flex; align-items: center; gap: 14px 18px;
+    flex-wrap: wrap; justify-content: center;
+  }
+
+  .price-tag {
+    font-size: 15px; font-weight: 600; color: var(--ink-60);
+    letter-spacing: -0.01em;
+  }
+  .price-tag strong { color: var(--ink); font-weight: 700; }
+
+  /* ── the one button ── */
+  .btn {
+    appearance: none; border: 0; cursor: pointer;
+    text-decoration: none; text-align: center;
+    white-space: nowrap;
+    font-family: inherit; font-weight: 600;
+    display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+    background: var(--ink); color: var(--paper);
+    font-size: 16.5px; letter-spacing: -0.01em;
+    padding: 15px 30px; border-radius: 999px;
+    transition: transform 0.35s var(--ease-out), box-shadow 0.35s var(--ease-out), background 0.2s;
+    box-shadow: 0 1px 2px rgba(23,20,15,0.18), 0 12px 32px -12px rgba(23,20,15,0.35);
+  }
+  .btn:hover { transform: translateY(-1px); }
+  .btn:active { transform: scale(0.97); }
+  /* programmatic focus (sheet open) must not show the default blue ring; keyboard users keep one */
+  .btn:focus:not(:focus-visible) { outline: none; }
+  .btn:focus-visible { outline: 3px solid rgba(176,114,46,0.55); outline-offset: 2px; }
+
+  .btn-wa {
+    background: #1FAF57; color: #fff; width: 100%;
+    padding: 17px 30px; font-size: 17px;
+    box-shadow: 0 1px 2px rgba(31,175,87,0.3), 0 14px 34px -12px rgba(31,175,87,0.55);
+  }
+  .btn-ghost {
+    background: transparent; color: var(--ink-60); width: 100%;
+    box-shadow: none; font-weight: 500; font-size: 15px;
+    padding: 13px 30px;
+  }
+  .btn-ghost:hover { color: var(--ink); }
+
+  /* ───────────────────────── Pack ───────────────────────── */
+  .stage {
+    margin-top: 6svh;
+    width: 100%;
+    display: flex; justify-content: center;
+    flex: 1; align-items: flex-end;
+    padding-bottom: 0;
+  }
+  .pack-wrap {
+    position: relative;
+    width: min(76vw, 340px);
+    animation: packFloat 7s ease-in-out infinite;
+  }
+  .pack-img {
+    width: 100%; height: auto; display: block;
+    border-radius: 26px;
+    box-shadow: 0 30px 70px -30px rgba(23,20,15,0.35);
+  }
+  @keyframes packFloat {
+    0%,100% { transform: translateY(0) }
+    50% { transform: translateY(-10px) }
+  }
+  .pack-wrap svg { width: 100%; height: auto; display: block; }
+  .pack-shadow {
+    display: none; /* photo card carries its own shadow; the ellipse doubled it */
+    position: absolute; left: 50%; bottom: -26px;
+    width: 78%; height: 30px;
+    transform: translateX(-50%);
+    background: radial-gradient(ellipse at center, rgba(23,20,15,0.20), transparent 68%);
+    filter: blur(6px);
+    animation: shadowPulse 7s ease-in-out infinite;
+  }
+  @keyframes shadowPulse {
+    0%,100% { transform: translateX(-50%) scaleX(1); opacity: 1 }
+    50% { transform: translateX(-50%) scaleX(0.9); opacity: 0.75 }
+  }
+
+  /* hero entrance choreography */
+  .rise { opacity: 0; transform: translateY(26px); animation: rise 1s var(--ease-out) forwards; }
+  .rise.d1 { animation-delay: 0.08s } .rise.d2 { animation-delay: 0.22s }
+  .rise.d3 { animation-delay: 0.36s } .rise.d4 { animation-delay: 0.52s }
+  .rise.d5 { animation-delay: 0.70s }
+  @keyframes rise { to { opacity: 1; transform: translateY(0) } }
+
+  /* ───────────────────────── Sections ───────────────────────── */
+  section { padding: 96px 0; }
+  .section-cream { background: var(--paper-2); }
+
+  .kicker {
+    font-size: 12.5px; font-weight: 600; letter-spacing: 0.10em;
+    text-transform: uppercase; color: var(--chai-deep);
+    margin-bottom: 16px;
+  }
+  h2 {
+    font-size: clamp(32px, 9vw, 52px);
+    line-height: 1.04;
+    font-weight: 700;
+    letter-spacing: -0.035em;
+    max-width: 16ch;
+  }
+  .lede {
+    margin-top: 20px;
+    font-size: clamp(17px, 4.6vw, 20px);
+    line-height: 1.55;
+    color: var(--ink-60);
+    font-weight: 450;
+    max-width: 34ch;
+  }
+  .lede strong { color: var(--ink); font-weight: 600; }
+
+  /* scroll reveal */
+  .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.9s var(--ease-out), transform 0.9s var(--ease-out); }
+  .reveal.in { opacity: 1; transform: translateY(0); }
+
+  /* ── composition strip ── */
+  .comp-grid {
+    margin-top: 44px;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 12px;
+  }
+  .comp-card {
+    background: var(--white);
+    border: 1px solid var(--ink-12);
+    border-radius: var(--radius-card);
+    padding: 26px 22px;
+  }
+  .comp-card .big {
+    font-size: clamp(30px, 8vw, 40px);
+    font-weight: 700; letter-spacing: -0.04em; line-height: 1;
+  }
+  .comp-card .big sup { font-size: 0.45em; font-weight: 600; top: -0.9em; position: relative; }
+  .comp-card .label {
+    margin-top: 10px; font-size: 13.5px; line-height: 1.4;
+    color: var(--ink-60); font-weight: 500;
+  }
+  .comp-card.amber { background: var(--chai); border-color: var(--chai); }
+  .comp-card.amber .big, .comp-card.amber .label { color: #FDF6EC; }
+  .comp-card.amber .label { opacity: 0.85; }
+
+  /* ── chai section ── */
+  .chai-lines { margin-top: 40px; display: flex; flex-direction: column; gap: 0; }
+  .chai-line {
+    display: flex; align-items: baseline; gap: 16px;
+    padding: 22px 0;
+    border-top: 1px solid var(--ink-12);
+    font-size: clamp(19px, 5.2vw, 24px);
+    font-weight: 600; letter-spacing: -0.02em;
+  }
+  .chai-line:last-child { border-bottom: 1px solid var(--ink-12); }
+  .chai-line .n {
+    font-size: 12px; font-weight: 600; color: var(--chai-deep);
+    letter-spacing: 0.06em; min-width: 24px;
+  }
+  .chai-line .note {
+    display: block; font-size: 14px; font-weight: 450;
+    color: var(--ink-60); letter-spacing: 0; margin-top: 6px; line-height: 1.45;
+  }
+
+  /* ── truth / education section ── */
+  .truth-card {
+    margin-top: 40px;
+    background: var(--ink); color: var(--paper);
+    border-radius: var(--radius-card);
+    padding: 34px 28px;
+  }
+  .truth-card .t-kicker {
+    font-size: 12px; font-weight: 600; letter-spacing: 0.1em;
+    text-transform: uppercase; color: rgba(251,249,245,0.5);
+    margin-bottom: 14px;
+  }
+  .truth-card p {
+    font-size: clamp(18px, 5vw, 21px); line-height: 1.5;
+    font-weight: 500; letter-spacing: -0.015em;
+  }
+  .truth-card p + p { margin-top: 16px; }
+  .truth-card .hl { color: #E9B87E; }
+
+  /* ── offer card ── */
+  .offer {
+    background: var(--white);
+    border: 1px solid var(--ink-12);
+    border-radius: var(--radius-card);
+    padding: 36px 28px;
+    margin-top: 44px;
+    text-align: center;
+    box-shadow: 0 24px 60px -30px rgba(23,20,15,0.25);
+  }
+  .offer .o-pack { font-size: 14px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-40); }
+  .offer .o-price {
+    margin-top: 14px;
+    font-size: clamp(52px, 15vw, 76px);
+    font-weight: 700; letter-spacing: -0.05em; line-height: 1;
+  }
+  .offer .o-price sup { font-size: 0.4em; font-weight: 600; top: -1em; position: relative; letter-spacing: -0.02em; }
+  .offer .o-unit { margin-top: 8px; font-size: 15px; color: var(--ink-60); font-weight: 500; }
+  .offer .o-perk {
+    margin: 22px auto 0; display: inline-block;
+    font-size: 13.5px; font-weight: 600; color: var(--chai-deep);
+    background: rgba(176,114,46,0.10);
+    border-radius: 999px; padding: 8px 16px;
+  }
+  .offer .btn { width: 100%; margin-top: 24px; padding: 17px 30px; font-size: 17px; }
+  .offer .o-honest { margin-top: 14px; font-size: 12.5px; color: var(--ink-40); line-height: 1.5; }
+
+  /* ── FAQ ── */
+  .faq { margin-top: 40px; }
+  details {
+    border-top: 1px solid var(--ink-12);
+  }
+  details:last-child { border-bottom: 1px solid var(--ink-12); }
+  summary {
+    list-style: none; cursor: pointer;
+    display: flex; align-items: center; justify-content: space-between; gap: 16px;
+    padding: 20px 0;
+    font-size: 16.5px; font-weight: 600; letter-spacing: -0.015em;
+  }
+  summary::-webkit-details-marker { display: none; }
+  summary .chev {
+    flex: none; width: 22px; height: 22px; border-radius: 50%;
+    border: 1.5px solid var(--ink-12);
+    display: grid; place-items: center;
+    transition: transform 0.35s var(--ease-out);
+    font-size: 12px; color: var(--ink-60); font-weight: 500;
+  }
+  details[open] summary .chev { transform: rotate(45deg); }
+  .faq-body { padding: 0 0 22px; font-size: 15px; line-height: 1.6; color: var(--ink-60); max-width: 56ch; }
+  .faq-body strong { color: var(--ink); }
+
+  /* ── range strip ── */
+  .range-row { margin-top: 28px; display: grid; grid-template-columns: 1fr; gap: 10px; }
+  .range-chip {
+    background: var(--white); border: 1px solid var(--ink-12);
+    border-radius: 18px; padding: 18px 20px;
+    display: flex; justify-content: space-between; align-items: baseline; gap: 12px;
+    text-decoration: none; color: var(--ink);
+    transition: transform 0.3s var(--ease-out);
+  }
+  a.range-chip:hover { transform: translateY(-1px); }
+  .range-chip.soon { cursor: pointer; font-family: inherit; width: 100%; text-align: left; align-items: center; }
+  .rc-name small { color: var(--ink-40); font-weight: 500; font-size: 12.5px; }
+  .rc-vote {
+    flex: none; white-space: nowrap;
+    border: 1.5px solid var(--chai); color: var(--chai-deep);
+    font-weight: 650; font-size: 12.5px; letter-spacing: -0.01em;
+    padding: 7px 14px; border-radius: 999px;
+    transition: all 0.25s var(--ease-out);
+  }
+  .range-chip.soon.voted { border-color: var(--chai); }
+  .range-chip.soon.voted .rc-vote { background: var(--chai); color: #FDF6EC; }
+  .rc-name { font-weight: 650; letter-spacing: -0.015em; }
+  .rc-sub { font-size: 13px; color: var(--ink-60); font-weight: 500; text-align: right; }
+  .range-note { margin-top: 14px; font-size: 13px; color: var(--ink-40); }
+
+  /* ───────────────────────── Sticky CTA bar ───────────────────────── */
+  .sticky-bar {
+    position: fixed; left: 0; right: 0; bottom: 0; z-index: 60;
+    padding: 12px 20px calc(12px + env(safe-area-inset-bottom, 0px));
+    backdrop-filter: blur(18px) saturate(1.6);
+    -webkit-backdrop-filter: blur(18px) saturate(1.6);
+    background: rgba(251, 249, 245, 0.82);
+    border-top: 1px solid var(--ink-12);
+    display: flex; align-items: center; justify-content: space-between; gap: 16px;
+    transform: translateY(110%);
+    transition: transform 0.5s var(--ease-out);
+  }
+  .sticky-bar.show { transform: translateY(0); }
+  .sticky-info { display: flex; flex-direction: column; }
+  .sticky-info .si-name { font-size: 14.5px; font-weight: 700; letter-spacing: -0.01em; }
+  .sticky-info .si-price { font-size: 13px; color: var(--ink-60); font-weight: 500; }
+  .sticky-bar .btn { padding: 12px 26px; font-size: 15px; flex: none; }
+
+  /* ───────────────────────── Sheet (the fake-door reveal) ───────────────────────── */
+  .sheet-backdrop {
+    position: fixed; inset: 0; z-index: 90;
+    background: rgba(23,20,15,0.45);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    opacity: 0; pointer-events: none;
+    transition: opacity 0.4s;
+  }
+  .sheet-backdrop.open { opacity: 1; pointer-events: auto; }
+
+  .sheet {
+    position: fixed; left: 0; right: 0; bottom: 0; z-index: 100;
+    background: var(--paper);
+    border-radius: 28px 28px 0 0;
+    padding: 20px 24px calc(28px + env(safe-area-inset-bottom, 0px));
+    transform: translateY(105%);
+    transition: transform 0.55s var(--ease-out);
+    box-shadow: 0 -20px 60px rgba(23,20,15,0.25);
+    max-width: 680px; margin: 0 auto;
+  }
+  .sheet.open { transform: translateY(0); }
+  .sheet-handle {
+    width: 40px; height: 4px; border-radius: 99px;
+    background: var(--ink-12); margin: 0 auto 22px;
+  }
+  .sheet-close {
+    position: absolute; top: 16px; right: 18px;
+    width: 34px; height: 34px; border-radius: 50%;
+    border: 1px solid var(--ink-12); background: var(--white);
+    color: var(--ink-60); font-size: 14px; cursor: pointer;
+    display: grid; place-items: center; font-family: inherit;
+  }
+  .sheet h3 {
+    font-size: clamp(26px, 7.4vw, 34px);
+    font-weight: 700; letter-spacing: -0.035em; line-height: 1.08;
+  }
+  .sheet h3 .soft { color: var(--ink-40); }
+  .sheet .sheet-sub {
+    margin-top: 12px; font-size: 16px; line-height: 1.5;
+    color: var(--ink-60); font-weight: 450;
+  }
+  .sheet .sheet-sub strong { color: var(--chai-deep); font-weight: 650; }
+  .sheet-perk {
+    margin-top: 20px;
+    display: flex; align-items: center; gap: 12px;
+    background: var(--white); border: 1px solid var(--ink-12);
+    border-radius: 18px; padding: 14px 16px;
+  }
+  .sheet-perk .p-ic {
+    flex: none; width: 38px; height: 38px; border-radius: 12px;
+    background: rgba(176,114,46,0.12); color: var(--chai-deep);
+    display: grid; place-items: center; font-size: 17px;
+  }
+  .sheet-perk .p-tx { font-size: 14px; line-height: 1.4; font-weight: 500; }
+  .sheet-perk .p-tx span { color: var(--ink-60); font-weight: 450; }
+  .sheet-pin {
+    width: 100%; margin-top: 14px;
+    padding: 14px 16px; border-radius: 16px;
+    border: 1px solid var(--ink-12); background: var(--white);
+    font-family: inherit; font-size: 16px; color: var(--ink);
+  }
+  .sheet-pin::placeholder { color: var(--ink-40); font-size: 13.5px; }
+  .sheet-actions { margin-top: 14px; display: flex; flex-direction: column; gap: 8px; }
+  .sheet-actions .btn { white-space: normal; }
+  .sheet-honest {
+    margin-top: 14px; text-align: center;
+    font-size: 12px; color: var(--ink-40); line-height: 1.5;
+  }
+
+  /* ───────────────────────── Footer ───────────────────────── */
+  footer { padding: 64px 0 120px; }
+  .foot-mark { font-weight: 700; font-size: 16px; letter-spacing: -0.02em; }
+  .foot-note { margin-top: 12px; font-size: 13px; line-height: 1.6; color: var(--ink-40); max-width: 46ch; }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation: none !important; transition: none !important; }
+    .rise, .reveal { opacity: 1; transform: none; }
+    .sheet, .sheet-backdrop, .sticky-bar { transition: none !important; }
+    html { scroll-behavior: auto; }
+  }
+
+  @media (min-width: 720px) {
+    .hero { padding-top: calc(52px + 12svh); }
+    .comp-grid { grid-template-columns: repeat(4, 1fr); }
+  }
+</style>
+<noscript><style>.reveal, .rise { opacity: 1 !important; transform: none !important; }</style></noscript>
+</head>
+<body>
+
+<!-- ───────────────────────── Nav ───────────────────────── -->
+<header class="nav" id="nav">
+  <div class="nav-inner">
+    <div class="wordmark">LactFree<span class="dot">.</span></div>
+    <div class="nav-city">Bangalore</div>
+  </div>
+</header>
+
+<main>
+  <!-- ───────────────────────── Hero ───────────────────────── -->
+  <section class="hero" style="padding-top: calc(52px + 8svh); padding-bottom: 0;">
+    <div class="eyebrow rise d1">Launching in Bangalore</div>
+    <h1 class="rise d2">Real milk.<br><span class="soft">Zero lactose.</span></h1>
+    <p class="hero-sub rise d3" id="heroSub">Love chai, but not how milk feels after? It might just be the lactose.</p>
+    <div class="use-picker rise d3" role="group" aria-label="How do you drink your milk?">
+      <button class="use-chip active" data-use="chai">Chai</button>
+      <button class="use-chip" data-use="coffee">Coffee</button>
+      <button class="use-chip" data-use="plain">A cold glass</button>
+    </div>
+    <div class="hero-cta-row rise d4">
+      <button class="btn" data-buy>Pre-order&nbsp;·&nbsp;₹115</button>
+      <span class="price-tag"><strong>1 litre</strong> · tetra pack</span>
+    </div>
+
+    <div class="stage rise d5">
+      <div class="pack-wrap">
+        <img class="pack-img" src="assets/milk-hero.jpg" alt="LactFree 1 litre lactose-free milk carton" width="805" height="1000" fetchpriority="high">
+        <div class="pack-shadow"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ───────────────────────── Mission ───────────────────────── -->
+  <section class="section-cream">
+    <div class="wrap">
+      <div class="kicker reveal">Why LactFree exists</div>
+      <h2 class="reveal">We started this for our own chai.</h2>
+      <p class="lede reveal">Every chai used to come with a heavy, uncomfortable hour after. When we found out it was the lactose, we went looking for real lactose-free options and found almost nothing. No 1-litre pack. No ready coffee. So we started LactFree: real dairy, zero lactose, made in Bangalore.</p>
+      <p class="lede reveal" style="margin-top:14px;"><strong>If you've felt it too, this is for you.</strong></p>
+      <p class="reveal" style="margin-top:24px; font-weight:650; letter-spacing:-0.01em;">— the LactFree founders<span style="color:var(--ink-40); font-weight:500;"> · Bangalore</span></p>
+    </div>
+  </section>
+
+  <!-- ───────────────────────── The whole pitch ───────────────────────── -->
+  <section>
+    <div class="wrap">
+      <div class="kicker reveal">What you're getting</div>
+      <h2 class="reveal">It's milk. That's the point.</h2>
+
+      <div class="chai-lines">
+        <div class="chai-line reveal"><span class="n">01</span><div>100% real cow's milk<span class="note">Real cow's milk with no preservatives, not a plant drink. The only addition is the lactase enzyme that breaks the lactose down before it reaches you.</span></div></div>
+        <div class="chai-line reveal"><span class="n">02</span><div>0% lactose<span class="note">It boils, froths, sets curd and makes proper chai, because it is milk.</span></div></div>
+        <div class="chai-line reveal"><span class="n">03</span><div>1 litre · ₹115<span class="note">A full litre for the whole house.</span></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ───────────────────────── Range ───────────────────────── -->
+  <section class="section-cream">
+    <div class="wrap">
+      <div class="kicker reveal">Also from LactFree</div>
+      <div class="range-row">
+        <a class="range-chip reveal" href="coffee.html?from=milk1l">
+          <span class="rc-name">Cold coffee</span>
+          <span class="rc-sub">200ml · ₹80 · lactose-free →</span>
+        </a>
+        <button class="range-chip soon reveal" data-interest="protein-milk"><span class="rc-name">High-protein milk <small>· coming soon</small></span><span class="rc-vote">Want it?&nbsp;+</span></button>
+        <button class="range-chip soon reveal" data-interest="ice-cream"><span class="rc-name">Ice cream <small>· coming soon</small></span><span class="rc-vote">Want it?&nbsp;+</span></button>
+      </div>
+      <p class="range-note reveal">Taps get counted. You're voting on what we make next.</p>
+    </div>
+  </section>
+
+  <!-- ───────────────────────── FAQ ───────────────────────── -->
+  <section>
+    <div class="wrap">
+      <div class="kicker reveal">Questions</div>
+      <h2 class="reveal">Asked, answered.</h2>
+      <div class="faq reveal">
+        <details>
+          <summary>How do I know lactose is my problem?<span class="chev">+</span></summary>
+          <div class="faq-body">Most people never connect the dots. They just know chai, coffee or a glass of milk often leaves them feeling heavy or bloated, and quietly cut back. Lactose is a common reason (your doctor can confirm it). And lactose-free milk is <strong>just milk</strong>: same chai, same kitchen, nothing else changes.</div>
+        </details>
+        <details>
+          <summary>Is this real milk?<span class="chev">+</span></summary>
+          <div class="faq-body">Yes — <strong>100% real cow's milk.</strong> We add the lactase enzyme, which breaks the lactose down into simpler sugars before it reaches you. That's also what makes it easy to digest. Nothing else changes.</div>
+        </details>
+        <details>
+          <summary>Why does it taste slightly sweeter?<span class="chev">+</span></summary>
+          <div class="faq-body">When lactose breaks down, it becomes glucose and galactose, which taste sweeter than lactose does. <strong>Same sugar quantity, no added sugar.</strong> In chai and coffee, most people can't tell.</div>
+        </details>
+        <details>
+          <summary>Isn't A2 milk the same thing?<span class="chev">+</span></summary>
+          <div class="faq-body">No. A2 refers to the protein type in the milk. <strong>A2 milk contains just as much lactose as any other milk.</strong> Lactose-free milk is the only milk where the lactose itself is gone.</div>
+        </details>
+        <details>
+          <summary>When can I buy it?<span class="chev">+</span></summary>
+          <div class="faq-body">We're launching soon in Bangalore. Join the list and <strong>your first litre is free</strong>. We'll message you on WhatsApp when delivery opens in your area.</div>
+        </details>
+      </div>
+
+      <div class="end-cta reveal" style="margin-top: 44px; text-align: center;">
+        <button class="btn" data-buy style="padding: 17px 36px; font-size: 17px;">Pre-order&nbsp;·&nbsp;₹115</button>
+        <p style="margin-top: 12px; font-size: 13px; color: var(--ink-40); font-weight: 500;">1 litre · launching first in Bangalore</p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- ───────────────────────── Footer ───────────────────────── -->
+<footer>
+  <div class="wrap">
+    <div class="foot-mark">LactFree<span style="color:var(--chai)">.</span></div>
+    <p class="foot-note">LactFree is being built in Bangalore by two founders. We're taking first orders as a waitlist and no payment is collected on this page. Write to us any time: hello@lactfree.in · <a href="privacy.html" style="color: var(--ink-40);">Privacy &amp; offer terms</a></p>
+  </div>
+</footer>
+
+<!-- ───────────────────────── Sticky CTA ───────────────────────── -->
+<div class="sticky-bar" id="stickyBar">
+  <div class="sticky-info">
+    <span class="si-name">LactFree 1L</span>
+    <span class="si-price">₹115 · lactose-free milk</span>
+  </div>
+  <button class="btn" data-buy>Pre-order</button>
+</div>
+
+<!-- ───────────────────────── Sheet ───────────────────────── -->
+<div class="sheet-backdrop" id="sheetBackdrop"></div>
+<div class="sheet" id="sheet" role="dialog" aria-modal="true" aria-labelledby="sheetTitle">
+  <div class="sheet-handle"></div>
+  <button class="sheet-close" id="sheetClose" aria-label="Close">✕</button>
+  <h3 id="sheetTitle">We're launching soon.<br><span class="soft">You're early. That pays.</span></h3>
+  <p class="sheet-sub">LactFree starts delivering in Bangalore shortly. Join the first-batch list and <strong>your first litre is free.</strong></p>
+  <div class="sheet-perk">
+    <div class="p-ic">🥛</div>
+    <div class="p-tx">First litre free at launch <span>· first-batch members only</span></div>
+  </div>
+  <input class="sheet-pin" id="pinInput" inputmode="numeric" pattern="[0-9]*" maxlength="6" placeholder="Your pincode, so we know where to deliver first (optional)" aria-label="Your Bangalore pincode, optional">
+  <div class="sheet-actions">
+    <a class="btn btn-wa" id="waJoin" href="https://wa.me/919999999999?text=Hi%2C%20I%20want%20my%20free%20first%20litre%20of%20LactFree%20%F0%9F%A5%9B%20(Bangalore)" target="_blank" rel="noopener">Join on WhatsApp — it takes 5 seconds</a>
+    <a class="btn btn-ghost" id="tallyJoin" href="https://tally.so/r/PLACEHOLDER" target="_blank" rel="noopener">Prefer not to WhatsApp? Leave your number</a>
+  </div>
+  <p class="sheet-honest">No payment today. No spam, just one message when we launch in your area. <a href="privacy.html#offer" style="color: inherit;">Offer terms</a></p>
+</div>
+
+<script>
+  // ── Nav border on scroll ──
+  const nav = document.getElementById('nav');
+  const stickyBar = document.getElementById('stickyBar');
+  let heroHeight = window.innerHeight * 0.8;
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 8);
+    stickyBar.classList.toggle('show', window.scrollY > heroHeight && !sheetOpen);
+  }, { passive: true });
+
+  // ── Scroll reveals ──
+  if ('IntersectionObserver' in window) {
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+    }, { threshold: 0.15 });
+    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+  } else {
+    // no observer support: show everything rather than let a throw kill the buy button
+    document.querySelectorAll('.reveal').forEach(el => el.classList.add('in'));
+  }
+
+  // ── Sheet (fake door → waitlist) ──
+  const sheet = document.getElementById('sheet');
+  const backdrop = document.getElementById('sheetBackdrop');
+  let sheetOpen = false;
+  let lastFocus = null;
+
+  let savedScrollY = 0;
+  function openSheet(source) {
+    if (sheetOpen) return; // double-tap must not double-fire InitiateCheckout or clobber savedScrollY
+    sheetOpen = true;
+    lastFocus = document.activeElement;
+    sheet.classList.add('open');
+    backdrop.classList.add('open');
+    stickyBar.classList.remove('show');
+    // iOS-safe scroll lock: overflow:hidden alone leaks on Safari
+    savedScrollY = window.scrollY;
+    document.body.style.position = 'fixed';
+    document.body.style.top = `-${savedScrollY}px`;
+    document.body.style.width = '100%';
+    lfTrack('InitiateCheckout', { content_name: 'lactfree-1l-milk', value: 115, currency: 'INR', source: source });
+    document.querySelectorAll('main, .nav, footer, .sticky-bar').forEach(el => { el.inert = true; });
+    document.getElementById('waJoin').focus({ preventScroll: true });
+  }
+  function closeSheet() {
+    sheetOpen = false;
+    document.querySelectorAll('main, .nav, footer, .sticky-bar').forEach(el => { el.inert = false; });
+    sheet.classList.remove('open');
+    backdrop.classList.remove('open');
+    document.body.style.position = '';
+    document.body.style.top = '';
+    document.body.style.width = '';
+    document.documentElement.style.scrollBehavior = 'auto';
+    window.scrollTo(0, savedScrollY);
+    document.documentElement.style.scrollBehavior = '';
+    stickyBar.classList.toggle('show', savedScrollY > heroHeight);
+    if (lastFocus) lastFocus.focus({ preventScroll: true });
+  }
+
+  document.querySelectorAll('[data-buy]').forEach((btn, i) => {
+    btn.addEventListener('click', () => openSheet(i === 0 ? 'hero' : (btn.closest('.sticky-bar') ? 'sticky' : 'offer')));
+  });
+  backdrop.addEventListener('click', closeSheet);
+  document.getElementById('sheetClose').addEventListener('click', closeSheet);
+  document.addEventListener('keydown', e => {
+    if (!sheetOpen) return;
+    if (e.key === 'Escape') { closeSheet(); return; }
+    if (e.key === 'Tab') {
+      // keep keyboard focus inside the dialog
+      const items = sheet.querySelectorAll('a, button');
+      const first = items[0], last = items[items.length - 1];
+      if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+      else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+    }
+  });
+
+  // ── Join clicks = the conversion. The anchors open a NEW tab (target=_blank),
+  //    so this page stays alive and the pixel payload completes — no redirect delay needed. ──
+  const leadFired = {};
+  let pinFired = false;
+  function trackedExit(el, channel) {
+    el.dataset.baseHref = el.href;
+    el.addEventListener('click', () => {
+      // pincode (optional) rides inside the WhatsApp prefill — spatial demand data at zero friction
+      const pin = (document.getElementById('pinInput').value || '').trim();
+      if (channel === 'whatsapp' && /^\d{6}$/.test(pin)) {
+        el.href = el.dataset.baseHref + encodeURIComponent(' Pincode: ' + pin);
+        if (!pinFired && window.fbq) { pinFired = true; fbq('trackCustom', 'PincodeEntered', { pin3: pin.slice(0, 3) }); }
+      } else if (channel === 'whatsapp') {
+        el.href = el.dataset.baseHref;
+      }
+      if (leadFired[channel]) return; // repeat taps must not inflate Lead counts
+      leadFired[channel] = true;
+      lfTrack('Lead', { content_name: 'lactfree-1l-milk', channel: channel, value: 115, currency: 'INR' });
+      if (channel === 'whatsapp') lfTrack('Contact');
+    });
+  }
+  trackedExit(document.getElementById('waJoin'), 'whatsapp');
+  trackedExit(document.getElementById('tallyJoin'), 'tally');
+
+  // ── Cross-navigation between live arms = portfolio-gravitation signal.
+  //    Tracked on ARRIVAL via ?from= (a click-fired pixel dies when the page unloads mid-request) ──
+  const crossFrom = new URLSearchParams(location.search).get('from');
+  if (crossFrom && window.fbq) fbq('trackCustom', 'CrossArrival', { from: crossFrom });
+
+  // ── One-tap use-case selector: personalizes the mirror line, measures the use-case split ──
+  const useLines = {
+    chai:   "Love chai, but not how milk feels after? It might just be the lactose.",
+    coffee: "Love your coffee, but not how milk feels after? It might just be the lactose.",
+    plain:  "Love a cold glass of milk, but not how it feels after? It might just be the lactose."
+  };
+  const usesFired = {};
+  document.querySelectorAll('.use-chip').forEach(chip => {
+    chip.addEventListener('click', () => {
+      document.querySelectorAll('.use-chip').forEach(c => c.classList.remove('active'));
+      chip.classList.add('active');
+      document.getElementById('heroSub').textContent = useLines[chip.dataset.use];
+      if (!usesFired[chip.dataset.use] && window.fbq) {
+        usesFired[chip.dataset.use] = true;
+        fbq('trackCustom', 'UseCase', { use: chip.dataset.use });
+      }
+    });
+  });
+
+  // ── Coming-soon chips = one-tap interest votes ──
+  document.querySelectorAll('[data-interest]').forEach(chip => {
+    chip.addEventListener('click', () => {
+      if (chip.classList.contains('voted')) return;
+      chip.classList.add('voted');
+      chip.querySelector('.rc-vote').textContent = '✓ Noted';
+      if (window.fbq) fbq('trackCustom', 'ComingSoonInterest', { product: chip.dataset.interest });
+    });
+  });
+
+  // ── ViewContent = real engagement (25% scroll OR 8s), not page load ──
+  let vcFired = false;
+  function fireVC() {
+    if (vcFired) return; vcFired = true;
+    lfTrack('ViewContent', { content_name: 'lactfree-1l-milk', content_category: 'milk', value: 115, currency: 'INR' });
+  }
+  setTimeout(fireVC, 8000);
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > document.body.scrollHeight * 0.25) fireVC();
+  }, { passive: true });
+</script>
+</body>
+</html>
