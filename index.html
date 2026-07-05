@@ -677,7 +677,8 @@
   <input class="sheet-pin" id="pinInput" inputmode="numeric" pattern="[0-9]*" maxlength="6" placeholder="Your pincode, so we know where to deliver first (optional)" aria-label="Your Bangalore pincode, optional">
   <div class="sheet-actions">
     <a class="btn btn-wa" id="waJoin" href="https://wa.me/919999999999?text=Hi%2C%20I%20want%20my%20free%20first%20litre%20of%20LactFree%20%F0%9F%A5%9B%20(Bangalore)" target="_blank" rel="noopener">Join on WhatsApp — it takes 5 seconds</a>
-    <a class="btn btn-ghost" id="tallyJoin" href="https://tally.so/r/PLACEHOLDER" target="_blank" rel="noopener">Prefer not to WhatsApp? Leave your number</a>
+    <!-- Tally fallback hidden until the real form exists (a 404 fallback is worse than none) -->
+    <a class="btn btn-ghost" id="tallyJoin" href="https://tally.so/r/PLACEHOLDER" target="_blank" rel="noopener" hidden>Prefer not to WhatsApp? Leave your number</a>
   </div>
   <p class="sheet-honest">No payment today. No spam, just one message when we launch in your area. <a href="privacy.html#offer" style="color: inherit;">Offer terms</a></p>
 </div>
